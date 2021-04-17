@@ -1,0 +1,9 @@
+.outline-none {
+  outline: none !important;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  font-family: 'Montserrat'
+}
