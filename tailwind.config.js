@@ -42,7 +42,7 @@ module.exports = {
       colors: {
         "primary-color": "#224E89",
         "secondary-color": "#F24C26",
-        "light-blue": "#0476D9",
+        "light-blue": "#5285EC",
         "dark-blue": "#144E81",
         "section-color": "#E9F5FF",
         "btn-color": "#2393F3",
@@ -50,6 +50,7 @@ module.exports = {
         "btn-light-blue": "#BADFFF",
         "light-gray": "#EEF1F8",
         "dark-gray": "#7A7D7E",
+        "title-color": "#537178",
         "description-color": "#8A8E92",
         "input-bg": "#EDEDED",
         "input-transparent": "rgba(255,255,255,0.2)",

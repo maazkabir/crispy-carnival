@@ -9,9 +9,7 @@ function Header() {
 
   return (
     <header
-      className={`w-full z-20 py-4 ${
-        "fixed bg-white shadow"
-      }`}
+      className={`w-full z-20 py-4 fixed bg-white shadow`}
       style={{ transition: "background .2s linear" }}
     >
       <div

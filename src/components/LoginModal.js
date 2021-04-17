@@ -9,7 +9,7 @@ function LoginModal() {
 
   return (
       <div style={{ height: "249px", width:"296px"}} className="bg-white shadow-md rounded-lg px-1 py-1 flex flex-col absolute self-center items-center content-center inset-0 m-auto">
-        <p className="py-4 pr-6 self-start" style={{color:"#537178", fontSize:"20px", textAlign:"left", paddingLeft: "14%"}}>
+        <p className="py-4 pr-6 self-start text-title-color" style={{fontSize:"20px", textAlign:"left", paddingLeft: "14%"}}>
           Login
         </p>
           <div className="mb-3">

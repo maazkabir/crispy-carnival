@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
-function Layout({ children, noHeader }) {
+function Layout({ children, noHeader, showOverlay }) {
 
   return (
     <div className="application">
@@ -18,7 +18,10 @@ function Layout({ children, noHeader }) {
         {!noHeader && 
           <Header />
         }
-        <main className="w-full" style={{ fontFamily: "Montserrat" }}>
+        {showOverlay && 
+          <div className="absolute w-full h-full bg-black" style={{opacity: 0.4}} />
+        }
+        <main className="w-full px-8 py-20" style={{ fontFamily: "Montserrat"}}>
           {children}
         </main>
       </div>
