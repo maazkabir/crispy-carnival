@@ -19,7 +19,7 @@ function LoginModal() {
             <input className="shadow appearance-none border border-red rounded-lg w-full py-2 px-3 text-dark-gray bg-light-gray mb-3 font-medium " id="password" type="password" placeholder="Name"/>
           </div>
           <div className="w-3/4 items-center justify-between">
-            <button className="bg-light-blue hover:bg-dark-blue text-white font-medium w-full py-2 px-4 rounded" type="button">
+            <button onClick={()=> navigate("dashboard")} className="bg-light-blue hover:bg-dark-blue text-white font-medium w-full py-2 px-4 rounded" type="button">
               Login
             </button>
           </div>
