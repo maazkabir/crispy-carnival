@@ -5,5 +5,7 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  font-family: 'Montserrat'
+  font-family: 'Montserrat';
+  background: #F4F4F6 0% 0% no-repeat padding-box;
+  opacity: 1;
 }
