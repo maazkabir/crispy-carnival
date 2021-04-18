@@ -9,11 +9,11 @@ function Dashboard() {
     
     return (
         <Layout showOverlay={showOverlay}>
-        {tasks.length <=0 ?
+        {tasks.length <= 0 ?
             <DashboardLayout />
-            /* <NewTask onClick={()=>{setShowOverlay(!showOverlay)}}/> */
+            /* <NewTask width={"296px"} onClick={()=>{setShowOverlay(!showOverlay)}}/> */
             :
-            <NewTask noTask width={"304px"} height={"158px"} onClick={()=>{setShowOverlay(!showOverlay)}}/>
+            <NewTask noTask height={"158px"} onClick={()=>{setShowOverlay(!showOverlay)}}/>
         }
         </Layout>
     );

@@ -1,0 +1,17 @@
+{
+  "name": "tdcx-todos",
+  "version": "0.0.1",
+  "main": "handler.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "serverless-bundle test"
+  },
+  "devDependencies": {
+    "serverless-bundle": "^3.1.1",
+    "serverless-webpack": "^5.3.5"
+  },
+  "dependencies": {
+    "mongodb": "^3.6.6",
+    "mongodb-client-encryption": "^1.2.3"
+  }
+}
