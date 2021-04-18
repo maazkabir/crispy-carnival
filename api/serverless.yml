@@ -1,4 +1,4 @@
-service: sigmund-blacklight-api
+service: tdcx-todo-api
 
 plugins:
   - serverless-prune-plugin
@@ -16,15 +16,6 @@ provider:
   profile: ${opt:profile, 'sigmund-profile'}
 
 functions:
-  # getBlackLightReport:
-  #   handler: handler.main
-  #   memorySize: 512 # optional, in MB, default is 1024
-  #   timeout: 30 # optional, in seconds, default is 6
-  #   events:
-  #       - http:
-  #           path: getBlackLightReport
-  #           method: post
-  #           cors: true
   todo-api:
     handler: tdcx-todos/handler.main
     events:
@@ -41,13 +32,8 @@ custom:
       number: 3
     bundle:
       linting: false # Enable linting as a part of the build process
-      # sourcemaps: true
       packager: yarn
-      # externals:                   # Don't include these in the package
-          # - chrome-aws-lambda             # Because it'll be provided through a Lambda Layer
-          # - "@themarkup/blacklight-collector"
     webpack:
       webpackConfig: 'webpack.config.js'   # Name of webpack configuration file 
       includeModules: false   # Node modules configuration for packaging 
       packager: 'yarn'   # Packager that will be used to package your external modules 
-      excludeFiles: src/**/*.test.js # Provide a glob for files to ignore 
