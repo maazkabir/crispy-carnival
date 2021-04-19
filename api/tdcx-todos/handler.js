@@ -81,7 +81,7 @@ function routeRequests(db, json, callback, event) {
         event.headers["Authorization"] = authHeader;
 	}
     console.log(authHeader)
-    if(_.isEmpty(authHeader)){
+    if(_.isEmpty(authHeader) && event.pathParameters.proxy !== "login"){
         callback(null, {
             statusCode: 400,
             headers: {

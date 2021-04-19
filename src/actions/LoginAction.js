@@ -8,44 +8,40 @@ export const LoginAction = (data, setLoading) => {
   }
 
   if(!data.hasOwnProperty("userToken")){
-    if (data.username == "" || data.username.length < 3) {
+    if (data.userName == "" || data.userName.length < 3) {
       toast.warn("Please enter username");
       return;
     }
-    if (data.password == "") {
-      toast.warn("Please enter password");
+    if (data.id == "") {
+      toast.warn("Please enter id");
       return;
     }  
   }
 
   setLoading(true);
   return axios
-    .post(`${urls.sls}/loginUser`, { ...data})
+    .post(`${urls.sls}/login`, { ...data})
     .then((response) => {
       setLoading(false);
       if (response.data.result === false) {
         return response.data;
       } else {
-        sessionStorage.setItem(
-          "com.tdcx.userKey",
-          JSON.stringify(response.data.userInfo)
-        );
-        sessionStorage.setItem(
-          "com.tdcx.userSession",
-          JSON.stringify(response.data.sessionId)
+        localStorage.setItem(
+          "com.tdcx.token",
+          JSON.stringify(response.data.data.token)
         );
         return response.data;
       }
     })
     .catch((err) => {
       console.log(err);
-      toast.error("Invalid username and/or password.");
+      toast.error("Invalid username and/or id.");
       setLoading(false);
       return false;
     });
 };
 
 export const Logout = () => {
-  sessionStorage.clear();
+  localStorage.clear();
   window.open("/", "_self");
 };

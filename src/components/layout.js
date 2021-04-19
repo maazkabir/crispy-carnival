@@ -5,9 +5,23 @@ import { Helmet } from "react-helmet";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import { navigate } from "gatsby-link";
 
 function Layout({ children, noHeader, showOverlay }) {
+  
+  useEffect(() => {
+    if (typeof window == undefined) {
+      return;
+    }
 
+    let token = JSON.parse(localStorage.getItem("com.tdcx.token"));
+    
+    if(!token && window.location.pathname !== "/"){
+      navigate("/");
+    }
+
+  }, [])
+  
   return (
     <div className="application">
       <Helmet>

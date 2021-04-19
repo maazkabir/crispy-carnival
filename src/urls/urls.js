@@ -1,11 +1,11 @@
 const prodUrls = {
     // prod
-    sls: 'https://api-p.com',
+    sls: ' https://uddivir7cj.execute-api.us-east-1.amazonaws.com/dev/api',
 }
 
 const qaUrls = {
     //qa
-    sls: 'https://api-q.com'
+    sls: ' https://uddivir7cj.execute-api.us-east-1.amazonaws.com/dev/api'
 }
 
 let urls = qaUrls;
