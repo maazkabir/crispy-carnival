@@ -1,6 +1,10 @@
 # crispy-carnival
 Interview Task repo for tdcx
 
+CREDENTIALS:
+name: testuser
+id: 1234,asdf .. etc give in any thing doesn't matter
+
 API folder contains the API which is deployed as a serverless lambda on AWS Cloud, written purely in NodeJS and connects to MongoDB for requests
 
 The rest of the directory is the Gatsby JS files. 
@@ -9,10 +13,13 @@ The site is currently deployed at
 https://youthful-hoover-146c82.netlify.app/
 
 I've tried to showcase my skills as much as I can given that I was only able to work on this over the weekend due to my current employment.
+
 The Front Setup is 
 React Gatsby JS + Tailwind CSS + Styled Components talking via axios to the endpoints.
 
 The backend is a node js function which based on the different incoming requests routes and processes accordingly.
+
+I've added bearer token based authentication for all calls except login.
 
 Let me know if you have any doubts.
 
@@ -35,4 +42,3 @@ Backend:
  
  Some Quick Updates: 
   Due to my limited time because of my current employemnt I still feel there's room for improvement on this from my side but since time didn't permit me I chose to cover everything I can in this limited time period!
-  Regards
