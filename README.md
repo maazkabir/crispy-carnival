@@ -3,7 +3,11 @@ Interview Task repo for tdcx
 
 API folder contains the API which is deployed as a serverless lambda on AWS Cloud, written purely in NodeJS and connects to MongoDB for requests
 
-The rest of the directory is the Gatsby JS files. The site is currently deployed at 
+The rest of the directory is the Gatsby JS files. 
+
+The site is currently deployed at 
+https://youthful-hoover-146c82.netlify.app/
+
 I've tried to showcase my skills as much as I can given that I was only able to work on this over the weekend due to my current employment.
 The Front Setup is 
 React Gatsby JS + Tailwind CSS + Styled Components talking via axios to the endpoints.
