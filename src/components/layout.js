@@ -19,6 +19,9 @@ function Layout({ children, noHeader, showOverlay }) {
     if(!token && window.location.pathname !== "/"){
       navigate("/");
     }
+    if(token && window.location.pathname === "/"){
+      navigate("/dashboard");
+    }
 
   }, [])
   
@@ -33,7 +36,7 @@ function Layout({ children, noHeader, showOverlay }) {
           <Header />
         }
         {showOverlay && 
-          <div className="absolute w-full h-full bg-black" style={{opacity: 0.4}} />
+          <div className="fixed w-full h-full bg-black" style={{opacity: 0.4, zIndex: 100}} />
         }
         <main className="w-full px-8 py-20" style={{ fontFamily: "Montserrat"}}>
           {children}

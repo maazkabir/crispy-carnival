@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { navigate, Link } from "gatsby";
-import { LoginAction, Logout } from "../actions/LoginAction";
+import { Logout } from "../actions/LoginAction";
 import _ from "lodash";
 import profileImage from "../images/donn-gabriel-baleva.png"
 
 function Header() {
- 
+  const [userName, setUserName] = useState("")
+  useEffect(() => {
+    if (typeof window == undefined) {
+      return;
+    }
+    let nameKey = JSON.parse(localStorage.getItem("com.tdcx.userName"));
+    setUserName(nameKey)
+  },[])
 
   return (
     <header
@@ -18,9 +25,9 @@ function Header() {
       >
        <div className={`flex flex-row justify-between`} style={{ width:"1.75rem" }}>
         <img src={profileImage}/>
-         <p className={`ml-4`}>Ali</p>
+         <p className={`ml-4`}>{userName}</p>
         </div>
-       <p>
+       <p onClick={() => Logout()} >
          Logout
        </p>
       </div>

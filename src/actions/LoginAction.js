@@ -28,6 +28,10 @@ export const LoginAction = (data, setLoading) => {
           "com.tdcx.token",
           JSON.stringify(response.data.data.token)
         );
+        localStorage.setItem(
+          "com.tdcx.userName",
+          JSON.stringify(response.data.data.userName)
+        );
         return response.data;
       }
     })

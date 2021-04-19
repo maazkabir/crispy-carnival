@@ -78,3 +78,23 @@ export const deleteTasksAction = (data, setLoading) => {
       return false;
     });
 };
+
+
+export const addTasksAction = (data, setLoading) => {
+    if (typeof window == undefined) {
+      return;
+    }
+    setLoading(true);
+    return axios
+      .post(`${urls.sls}/tasks`, {...data}, { headers: header() })
+      .then((response) => {
+        setLoading(false);
+          return response.data;
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Invalid token.");
+        setLoading(false);
+        return false;
+      });
+  };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { navigate, Link } from "gatsby";
-import { LoginAction, Logout } from "../actions/LoginAction";
+import { LoginAction } from "../actions/LoginAction";
 import _ from "lodash";
 
 function LoginModal() {
