@@ -7,7 +7,7 @@ function NewTask(props) {
     
     return (
         <>
-        <Card style={{width: props.width, height: props.height ? props.height : "198px", zIndex: 105}} className="md:inset-0 m-auto absolute self-center items-center content-center px-2 py-4">
+        <Card style={{width: props.width, height: props.height ? props.height : "198px", zIndex: props.noTask ? 0 : 105}} className="md:inset-0 m-auto absolute self-center items-center content-center px-2 py-4">
             <p className="py-4 px-6 self-start text-title-color" style={{fontSize:"20px", textAlign:"left"}}>
                 {props.noTask ? "You have no task." : "+ " + props.isEditTask ? "Update Task" : "New Task"}
             </p>

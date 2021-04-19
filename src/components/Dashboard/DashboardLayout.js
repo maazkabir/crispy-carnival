@@ -7,7 +7,7 @@ import { getDashboardAction, getTasksAction, updateTasksAction, deleteTasksActio
 import { toast } from "react-toastify";
 import Spinner from "../../images/spinner.svg";
 import NewTask from "../NewTask";
-import { ResponsiveContainer, PieChart, Pie, Sector } from "recharts";
+import PieChart from "./PieChart";
 
 function DashboardLayout(props) {
 
@@ -113,6 +113,16 @@ function DashboardLayout(props) {
 
     return (
         <>
+        {loading && (
+            <>
+                <div style={{zIndex: 120}} className="absolute inset-0 flex flex-col h-full justify-center items-center text-xl text-white">
+                    <span>
+                    <img src={Spinner} />
+                    </span>
+                    Loading
+                </div>
+            </>
+        )}
             {tasksData.length <= 0 ?
                 !showNewTask ? 
                     <NewTask noTask height={"158px"} onClick={()=>{ props.setShowOverlay(true); setShowNewTask(true);}}/>
@@ -121,16 +131,6 @@ function DashboardLayout(props) {
                 
                 :
                 <>
-                    {loading && (
-                        <>
-                            <div style={{zIndex: 120}} className="absolute inset-0 flex flex-col h-full justify-center items-center text-xl text-white">
-                                <span>
-                                <img src={Spinner} />
-                                </span>
-                                Loading
-                            </div>
-                        </>
-                    )}
                     <div className="w-full flex flex-col md:flex-row">
                         <Card style={{height: "250px"}} className="m-auto self-center items-center content-center px-2 py-4">
                             <p className="py-2 px-6 self-start text-title-color" style={{fontSize:"20px", textAlign:"left"}}>
@@ -153,7 +153,7 @@ function DashboardLayout(props) {
                             </ul>
                         </Card>
                         <Card style={{height: "250px"}} className="m-auto self-center items-center content-center px-2 py-4">
-                               <GRAPH state={state} onPieEnter={onPieEnter} data={[{ name: "Completed", value: cardsData?.tasksCount?.true || 0 }, { name: "Incomplete", value: cardsData?.totalTasks - ( cardsData?.tasksCount?.true || 0) }]}/>
+                               <PieChart state={state} onPieEnter={onPieEnter} data={[{ name: "Completed", value: cardsData?.tasksCount?.true || 0 }, { name: "Incomplete", value: cardsData?.totalTasks - ( cardsData?.tasksCount?.true || 0) }]}/>
                         </Card>
                     </div>
 
@@ -210,68 +210,3 @@ function DashboardLayout(props) {
 }
 
 export default DashboardLayout;
-
-const GRAPH = (props) => (
-    <ResponsiveContainer width="100%" height="100%">
-    <PieChart  height="100%">
-      <Pie
-        activeIndex={props.state.activeIndex}
-        activeShape={renderActiveShape}
-        data={props.data}
-        cx="50%"
-        cy="50%"
-        innerRadius={60}
-        outerRadius={80}
-        fill="#8884d8"
-        dataKey="value"
-        onMouseEnter={props.onPieEnter}
-          />
-    </PieChart>
-    </ResponsiveContainer>
-)
-
-const renderActiveShape = (props) => {
-    const RADIAN = Math.PI / 180;
-    const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
-    const sin = Math.sin(-RADIAN * midAngle);
-    const cos = Math.cos(-RADIAN * midAngle);
-    const sx = cx + (outerRadius + 10) * cos;
-    const sy = cy + (outerRadius + 10) * sin;
-    const mx = cx + (outerRadius + 30) * cos;
-    const my = cy + (outerRadius + 30) * sin;
-    const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-    const ey = my;
-    const textAnchor = cos >= 0 ? 'start' : 'end';
-  
-    return (
-      <g>
-        <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-          {payload.name}
-        </text>
-        <Sector
-          cx={cx}
-          cy={cy}
-          innerRadius={innerRadius}
-          outerRadius={outerRadius}
-          startAngle={startAngle}
-          endAngle={endAngle}
-          fill={fill}
-        />
-        <Sector
-          cx={cx}
-          cy={cy}
-          startAngle={startAngle}
-          endAngle={endAngle}
-          innerRadius={outerRadius + 6}
-          outerRadius={outerRadius + 10}
-          fill={fill}
-        />
-        <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
-        <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`${value}`}</text>
-        {/* <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
-          {`(Rate ${(percent * 100).toFixed(2)}%)`}
-        </text> */}
-      </g>
-    );
-  };

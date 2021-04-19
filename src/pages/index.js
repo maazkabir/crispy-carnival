@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../components/layout";
 import LoginModal from "../components/LoginModal";
 
 function IndexPage() {
+  const [showOverlay, setShowOverlay] = useState(false);
 
   return (
-    <Layout noHeader>
-      <LoginModal/>
+    <Layout showOverlay={showOverlay} noHeader>
+      <LoginModal setShowOverlay={(e) => setShowOverlay(e)}/>
     </Layout>
   );
 }

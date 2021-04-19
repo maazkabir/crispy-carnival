@@ -9,11 +9,13 @@ export const LoginAction = (data, setLoading) => {
 
   if (data.userName == "" || data.userName.length < 3) {
     toast.warn("Please enter username");
-    return;
+    setLoading(false);
+    return {result: false };
   }
   if (data.id == "") {
     toast.warn("Please enter id");
-    return;
+    setLoading(false);
+    return {result: false };
     }  
 
   setLoading(true);
