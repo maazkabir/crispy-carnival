@@ -5,6 +5,7 @@ import editImage from "../../images/pen-solid.svg";
 import trashImage from "../../images/trash-solid.svg";
 import { getDashboardAction, getTasksAction, updateTasksAction, deleteTasksAction } from "../../actions/DashboardAction";
 import { toast } from "react-toastify";
+import Spinner from "../../images/spinner.svg";
 
 function DashboardLayout(props) {
 
@@ -71,6 +72,17 @@ function DashboardLayout(props) {
 
     return (
         <>
+        {loading && (
+            <>
+            <div className="absolute w-full h-full bg-black" style={{opacity: 0.4}} />
+                <div className="absolute inset-0 flex flex-col h-full justify-center items-center text-xl text-primary-color">
+                    <span>
+                    <img src={Spinner} />
+                    </span>
+                    Loading
+                </div>
+            </>
+        )}
         <div className="w-full flex flex-col md:flex-row">
             <Card style={{height: "158px"}} className="m-auto self-center items-center content-center px-2 py-4">
                 <p className="py-2 px-6 self-start text-title-color" style={{fontSize:"20px", textAlign:"left"}}>
